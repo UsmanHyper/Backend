@@ -1,4 +1,4 @@
-// middleware/middleware.js
+// middleware/middleware.js//
 
 const corsMiddleware = function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

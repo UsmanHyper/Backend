@@ -5,7 +5,6 @@
 //     return password;
 // };
 
-
 const generateRandomPassword = () => {
     const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+[]{}|;:,.<>?'; // Add your desired special characters
     const passwordLength = 8;

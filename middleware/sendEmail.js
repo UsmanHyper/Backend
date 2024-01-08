@@ -57,10 +57,10 @@ const sendEmail = async (email, templateName, data) => {
     try {
         const info = await transporter.sendMail(mailOptions);
         console.log('Email sent:', info.response);
+        console.log("info message", info);
     } catch (error) {
         console.error('Email sending error:', error);
     }
-    console.log("info message", info);
 };
 
 module.exports = { sendEmail };

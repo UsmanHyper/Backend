@@ -25,9 +25,10 @@ const saveUser = async (userData, res) => {
         const userpassword = randomPassword ? randomPassword : "";
 
         // Send sign-up email
-        await  sendEmail(userData.email, 'signUp', { username: userData?.email, userpassword: randomPassword });
-
+        
         const savedUser = await newUser.save();
+        
+       sendEmail(userData.email, 'signUp', { username: userData?.email, userpassword: randomPassword });
 
         res.status(200).json({
             status: 200,

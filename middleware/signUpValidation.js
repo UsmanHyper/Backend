@@ -15,6 +15,7 @@ const validateUserData = async (req, res, next) => {
     if (!emailRegex.test(userData.email)) {
         return res.status(400).json({ status: 400, error: 'Invalid email format' });
     }
+    
 
     // Check if the email is already in use
     const existingUser = await User.findOne({ email: userData.email });

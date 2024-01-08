@@ -45,7 +45,6 @@ const saveUser = async (userData, res) => {
     }
 };
 
-
 router.post("/", validateUserData, async (req, res) => {
     try {
         const userData = req.body;

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user.js");
 
+
 router.delete("/:userId", async (req, res) => {
   try {
     const userId = req.params.userId;

@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+require('dotenv').config();
 
 // // MongoDB connection
 // mongoose.connect('mongodb://localhost:27017/admin', {
@@ -6,12 +8,7 @@
 //   // useUnifiedTopology: true,
 // });
 
-const mongoose = require("mongoose");
-require('dotenv').config();
 
-
-
-console.log("process.env.MONGO" , process.env.MONGO)
 mongoose.connect( process.env.MONGO, {
   // useNewUrlParser: true,
   // useUnifiedTopology: true,

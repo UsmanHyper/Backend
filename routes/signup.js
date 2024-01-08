@@ -8,6 +8,7 @@ const User = require("../models/user.js");
 const { validateUserData } = require("../middleware/signUpValidation.js");
 const { sendEmail } = require("../middleware/sendEmail.js");
 const { generateRandomPassword } = require('../middleware/rendomPassword.js');
+require('dotenv').config();
 
 
 const saveUser = async (userData, res) => {

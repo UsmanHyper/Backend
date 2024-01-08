@@ -1,17 +1,3 @@
-// // const express = require("express");
-// const mongoose = require("mongoose");
-// // const bodyParser = require("body-parser");
-// // const cors = require("cors");
-// // const bcrypt = require("bcrypt");
-// // const jwt = require("jsonwebtoken");
-// // const app = express();
-// // const PORT = 3000;
-
-// // // Middleware
-// // app.use(cors());
-// // app.use(bodyParser.json());
-
-
 
 // // MongoDB connection
 // mongoose.connect('mongodb://localhost:27017/admin', {
@@ -21,8 +7,12 @@
 // });
 
 const mongoose = require("mongoose");
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/admin', {
+
+
+console.log("process.env.MONGO" , process.env.MONGO)
+mongoose.connect( process.env.MONGO, {
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
 });

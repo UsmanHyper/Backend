@@ -1,6 +1,6 @@
 // emailMiddleware.js
-const fs = require('fs');
 const nodemailer = require('nodemailer');
+const fs = require('fs');
 const ejs = require('ejs');
 require('dotenv').config();
 

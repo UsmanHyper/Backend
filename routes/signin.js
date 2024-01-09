@@ -3,13 +3,13 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.js");
-const { generateSecretKey } = require('../middleware/jwtSecretKey.js');
+require('dotenv').config();
+
 
 let token
 
 router.post("/", async (req, res) => {
   try {
-    const jwtKey = generateSecretKey()
     const { email, password } = req.body;
 
     // Find the user in the database
@@ -30,8 +30,10 @@ router.post("/", async (req, res) => {
         name: user.name,
         date: user.date,
       };
+
+      console.log("-----" ,  process.env.JWT_SECRET)
       // Generate a JWT token
-      token = jwt.sign(payload, jwtKey, { expiresIn: "30m" });
+      token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
 
 
       if (passwordMatch) {

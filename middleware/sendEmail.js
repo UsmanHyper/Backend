@@ -2,6 +2,7 @@
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 const ejs = require('ejs');
+require('dotenv').config();
 
 // Load email configuration from environment variables or other sources
 const myEmail = process.env.EMAIL || "smartpolicewebportal@gmail.com";

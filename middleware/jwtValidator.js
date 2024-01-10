@@ -22,7 +22,7 @@ const authenticateToken = (req, res, next) => {
         }
 
         req.user = user;
-        next(); // Call next() to move to the next middleware or route handler
+        next();
     });
 };
 

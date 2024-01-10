@@ -11,6 +11,9 @@ const signinRoute = require("./routes/signin.js");
 const getDataRoute = require("./routes/getdata.js");
 const updateRoute = require("./routes/update.js");
 const deleteRoute = require("./routes/delete.js");
+const changePassword = require("./routes/changePassword.js");
+const resetPassword = require("./routes/resetPassword.js");
+const getOtp = require("./routes/genrateOtp.js");
 const app = express();
 const PORT = 3000;
 require('dotenv').config();
@@ -35,6 +38,9 @@ mongooseConnection.on('open', () => {
     app.use("/api/signin", signinRoute);
     app.use("/api/getdata", getDataRoute);
     app.use("/api/update", updateRoute);
+    app.use("/api/changePassword", changePassword);
+    app.use("/api/resetPassword", resetPassword);
+    app.use("/api/getOtp", getOtp);
     app.use("/api/delete", deleteRoute);
 
     // Other code related to Express setup, routes, and starting the server

@@ -31,7 +31,6 @@ router.post("/", async (req, res) => {
         date: user.date,
       };
 
-      console.log("-----" ,  process.env.JWT_SECRET)
       // Generate a JWT token
       token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
 

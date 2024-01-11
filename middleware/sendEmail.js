@@ -12,56 +12,59 @@ let compiledTemplate
 
 const sendEmail = async (email, templateName, data) => {
     // Load the HTML template based on the templateName
-    // const htmlTemplate = fs.readFileSync(`..//${templateName}.html`, 'utf-8');
+    // const htmlTemplate = fs.readFileSync(`C:/usman/new data base/email-templete/signUp.html`, 'utf-8');
     const htmlTemplate = fs.readFileSync(`C:/usman/new data base/email-templete/${templateName}.html`, 'utf-8');
+    const forgetTemplate = fs.readFileSync(`C:/usman/new data base/email-templete/${templateName}.html`, 'utf-8');
 
     // Compile the template with EJS and data
-    console.log("template", templateName);
 
     if (templateName === "signUp") {
         let username = data.username;
         let userpassword = data.userpassword
         compiledTemplate = ejs.compile(htmlTemplate)({ username, userpassword });
-    } else if (templateName) {
+    } else if (templateName === "verifyPassoword") {
 
-        compiledTemplate = ejs.compile(htmlTemplate)({ username, userpassword });
-    }
+        let otpkeyData = data.otpKey
+        let username = "Abc";
+        let userpassword = "xyz"
+        compiledTemplate = ejs.compile(forgetTemplate)({  otpkeyData });
+}
     else {
-        return;
+    return;
+}
+
+// Create and send the email using the compiled template
+const transporter = nodemailer.createTransport({
+    // host: 'smtp.ethereal.email',
+    // port: 587,
+    // auth: {
+    //     user: 'smartpolicewebportal@gmail.com',
+    //     pass: 'cCsAB5dfdgzpEjAZkc'
+    // }
+    service: "gmail",
+    port: 587,
+    secure: true,
+    auth: {
+        user: myEmail,
+        pass: myPassword
     }
+});
 
-    // Create and send the email using the compiled template
-    const transporter = nodemailer.createTransport({
-        // host: 'smtp.ethereal.email',
-        // port: 587,
-        // auth: {
-        //     user: 'smartpolicewebportal@gmail.com',
-        //     pass: 'cCsAB5dfdgzpEjAZkc'
-        // }
-        service: "gmail",
-        port: 587,
-        secure: true,
-        auth: {
-            user: myEmail,
-            pass: myPassword
-        }
-    });
+const mailOptions = {
+    from: `'Usman Bin Saad' ${myEmail}`,
+    // to: email,
+    to: `${email} , "smartpolicewebportal@gmail.com"`,
+    subject: 'Welcome to Our App',
+    html: compiledTemplate,
+};
 
-    const mailOptions = {
-        from: `'Usman Bin Saad' ${myEmail}`,
-        // to: email,
-        to: `${email} , "smartpolicewebportal@gmail.com"`,
-        subject: 'Welcome to Our App',
-        html: compiledTemplate,
-    };
-
-    try {
-        const info = await transporter.sendMail(mailOptions);
-        console.log('Email sent:', info.response);
-    } catch (error) {
-        console.error('Email sending error:', error);
-    }
-    console.log("info message", info);
+try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent:', info.response);
+} catch (error) {
+    console.error('Email sending error:', error);
+}
+console.log("info message", info);
 };
 
 module.exports = { sendEmail };

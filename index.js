@@ -4,6 +4,7 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("./models/user.js");
+const UserOTPVerification = require("./models/otpVerification.js");
 const mongooseConnection = require("./db/mongodb.js");
 const corsMiddleware = require("./middleware/cors_middleware");
 const signupRoute = require("./routes/signup.js");
@@ -12,8 +13,9 @@ const getDataRoute = require("./routes/getdata.js");
 const updateRoute = require("./routes/update.js");
 const deleteRoute = require("./routes/delete.js");
 const changePassword = require("./routes/changePassword.js");
+const forgotPassword = require("./routes/forgotPassword.js");
 const resetPassword = require("./routes/resetPassword.js");
-const getOtp = require("./routes/genrateOtp.js");
+const verifyOTP = require("./routes/verifyOtp.js");
 const app = express();
 const PORT = 3000;
 require('dotenv').config();
@@ -24,9 +26,7 @@ app.use(corsMiddleware);
 app.use(cors());
 app.use(bodyParser.json());
 
-// Use the imported connection
-// mongooseConnection.on('open', () => {
-//   console.log('MongoDB connected');
+
 
 
 
@@ -39,8 +39,9 @@ mongooseConnection.on('open', () => {
     app.use("/api/getdata", getDataRoute);
     app.use("/api/update", updateRoute);
     app.use("/api/changePassword", changePassword);
+    app.use("/api/forgotPassword", forgotPassword);
     app.use("/api/resetPassword", resetPassword);
-    app.use("/api/getOtp", getOtp);
+    app.use("/api/verifyOTP", verifyOTP);
     app.use("/api/delete", deleteRoute);
 
     // Other code related to Express setup, routes, and starting the server

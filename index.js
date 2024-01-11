@@ -4,6 +4,9 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("./models/user.js");
+const cronjob = require("./middleware/cron_job.js");
+// const cron = require("node-cron");
+
 const UserOTPVerification = require("./models/otpVerification.js");
 const mongooseConnection = require("./db/mongodb.js");
 const corsMiddleware = require("./middleware/cors_middleware");
@@ -27,8 +30,19 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
+// cron.schedule("0 0 * * *", async () => {
+//     try {
+//         const currentTime = Date.now();
 
+//         await UserOTPVerification.deleteMany({ expireAt: { $lt: currentTime } });
 
+//         console.log("Expired OTPs deleted successfully");
+//     } catch (error) {
+//         console.error("Error deleting expired OTPs:", error);
+//     }
+// });
+const cron = cronjob
+console.log("--------------", cron)
 
 mongooseConnection.on('open', () => {
     console.log('MongoDB connected');

@@ -20,6 +20,17 @@ router.patch("/", async (req, res) => {
 
         // Find the user in the database
         const userOTP = await UserOTPVerification.findOne({ userId: userId });
+        if (!userOTP) {
+            res.status(401).json({ status: "401", error: 'No OTP Available' });
+            return;
+        } else {
+            if (userOTP.expireAt < Date.now()) {
+                await UserOTPVerification.deleteMany({ expireAt: { $lt: currentTime } });
+
+                res.status(401).json({ status: "401", error: 'OTP Expired' });
+                return;
+            }
+        }
 
         const otpMatch = await bcrypt.compare(otp, userOTP.otp);
 
@@ -29,6 +40,8 @@ router.patch("/", async (req, res) => {
                 password: hashedPassword
             }
             const updatedUser = await User.findOneAndUpdate({ _id: userId }, updatedUserData, { new: true });
+            await UserOTPVerification.deleteMany({ userId: userId });
+
             res.status(200).json({ status: "200", message: 'Sucess' });
         } else {
             res.status(401).json({ status: "401", message: 'Invalid Password' });

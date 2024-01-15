@@ -30,19 +30,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-// cron.schedule("0 0 * * *", async () => {
-//     try {
-//         const currentTime = Date.now();
 
-//         await UserOTPVerification.deleteMany({ expireAt: { $lt: currentTime } });
-
-//         console.log("Expired OTPs deleted successfully");
-//     } catch (error) {
-//         console.error("Error deleting expired OTPs:", error);
-//     }
-// });
 const cron = cronjob
-console.log("--------------", cron)
+// console.log("--------------", cron)
 
 mongooseConnection.on('open', () => {
     console.log('MongoDB connected');

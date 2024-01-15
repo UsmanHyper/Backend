@@ -41,10 +41,7 @@ router.patch("/", async (req, res) => {
 });
 
 const sentVerificationEmail = async (user) => {
-    console.log("ERR_HTTP_HEADERS_SENT")
-
     await sendEmail(user, 'verificationEmail');
-
 };
 
 

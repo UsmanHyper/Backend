@@ -66,7 +66,6 @@ const sendEmail = async (email, templateName, data) => {
     } catch (error) {
         console.error('Email sending error:', error);
     }
-    // console.log("info message", info ? info : "");
 };
 
 module.exports = { sendEmail };

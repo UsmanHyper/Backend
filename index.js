@@ -32,7 +32,6 @@ app.use(bodyParser.json());
 
 
 const cron = cronjob
-// console.log("--------------", cron)
 
 mongooseConnection.on('open', () => {
     console.log('MongoDB connected');

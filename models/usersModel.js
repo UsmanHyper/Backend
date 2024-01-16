@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
+const userModelSchema = new mongoose.Schema({
 
 
     first_name: { type: String, required: true },
@@ -16,14 +16,15 @@ const userSchema = new mongoose.Schema({
         match: /[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
     },
 
-    user_salary: { type: String, required: true },
-    user_image: { type: String, required: [true, "Pleae Upload an Image"] },
+    password: { type: String, required: true },
+    user_salary: { type: String,  required: true },
+    user_image: { type: String,  required: true },
     write: { type: String, required: false },
     date: {
         type: Date,
         default: Date.now
     }
 });
-const User = mongoose.model("User", userSchema);
+const UserModel = mongoose.model("UserModel", userModelSchema);
 
-module.exports = User;
+module.exports = UserModel;

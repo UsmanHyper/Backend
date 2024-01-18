@@ -1,26 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const multer = require("multer")
-
+const { upload } = require("../middleware/multer.js")
 const UserModel = require("../models/usersModel.js");
 const { authenticateToken } = require("../middleware/jwtValidator.js");
 
 require('dotenv').config();
 
-const storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, 'C:/usman/new data base/images');
-    },
-    filename: function (req, file, callback) {
-        callback(null, file.fieldname)
-        // callback(null, Date.now() + path.extname(file.originalname));
-    }
-})
-const upload = multer({ storage: storage })
-require('dotenv').config();
+
 
 router.get("/", authenticateToken, upload.single("image"), async (req, res) => {
-// router.get("/", upload.single("image"), async (req, res) => {
+    // router.get("/", upload.single("image"), async (req, res) => {
     try {
         const page = Number(req.query.page) || 1;
         const limit = Number(req.query.limit) || 10;

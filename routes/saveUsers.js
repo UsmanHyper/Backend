@@ -1,26 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const multer = require("multer")
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
 const UserModel = require("../models/usersModel.js");
+const { upload } = require("../middleware/multer.js")
 const { authenticateToken } = require("../middleware/jwtValidator.js");
 const { sendEmail } = require("../middleware/sendEmail.js");
 const { generateRandomPassword } = require('../middleware/rendomPassword.js');
-require('dotenv').config();
-
-const storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, 'C:/usman/new data base/images');
-    },
-    filename: function (req, file, callback) {
-        callback(null, file.fieldname)
-        // callback(null, Date.now() + path.extname(file.originalname));
-    }
-})
-const upload = multer({ storage: storage })
 require('dotenv').config();
 
 

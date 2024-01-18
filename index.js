@@ -23,7 +23,9 @@ const deleteRoute = require("./routes/delete.js");
 const changePassword = require("./routes/changePassword.js");
 const forgotPassword = require("./routes/forgotPassword.js");
 const resetPassword = require("./routes/resetPassword.js");
-const saveUsersss = require("./routes/saveUsers.js");
+const saveUsers = require("./routes/saveUsers.js");
+const getUsers = require("./routes/getAllDataUsers.js");
+const getOneUsers = require("./routes/getUserData.js");
 const verifyOTP = require("./routes/verifyOtp.js");
 const app = express();
 const PORT = 3000;
@@ -61,8 +63,10 @@ mongooseConnection.on('open', () => {
     app.use("/api/resetPassword", resetPassword);
     app.use("/api/verifyOTP", verifyOTP);
     app.use("/api/delete", deleteRoute);
-    app.use("/api/saveUsers", saveUsersss);
-    
+    app.use("/api/saveUsers", saveUsers);
+    app.use("/api/getUsers", getUsers);
+    app.use("/api/getOneUsers", getOneUsers);
+
     // Other code related to Express setup, routes, and starting the server
     app.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);

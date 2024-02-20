@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const User = require("../models/user.js");
+const User = require("../../models/user.js");
 require('dotenv').config();
-const UserModel = require("../models/usersModel.js");
+const UserModel = require("../../models/usersModel.js");
 
 let token
 let payload

@@ -4,10 +4,10 @@ const crypto = require("crypto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const User = require("../models/user.js");
-const { validateUserData } = require("../middleware/signUpValidation.js");
-const { sendEmail } = require("../middleware/sendEmail.js");
-const { generateRandomPassword } = require('../middleware/rendomPassword.js');
+const User = require("../../models/user.js");
+const { validateUserData } = require("../../middleware/signUpValidation.js");
+const { sendEmail } = require("../../middleware/sendEmail.js");
+const { generateRandomPassword } = require('../../middleware/rendomPassword.js');
 require('dotenv').config();
 
 

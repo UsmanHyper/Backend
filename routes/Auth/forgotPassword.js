@@ -3,11 +3,11 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 // const cron = require("node-cron");
 
-const User = require("../models/user.js");
-const UserOTPVerification = require("../models/otpVerification.js");
+const User = require("../../models/user.js");
+const UserOTPVerification = require("../../models/otpVerification.js");
 
-const { sendEmail } = require("../middleware/sendEmail.js");
-const { generateOTP } = require("../middleware/genrateOtp");
+const { sendEmail } = require("../../middleware/sendEmail.js");
+const { generateOTP } = require("../../middleware/genrateOtp.js");
 
 const STATUS_SUCCESS = 200;
 const STATUS_BAD_REQUEST = 401;

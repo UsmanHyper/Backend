@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { sendEmail } = require("../middleware/sendEmail.js");
+const { sendEmail } = require("../../middleware/sendEmail.js");
 
 const bcrypt = require("bcrypt");
-const User = require("../models/user.js");
+const User = require("../../models/user.js");
 
 router.patch("/", async (req, res) => {
     try {

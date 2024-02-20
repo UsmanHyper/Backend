@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
-const User = require("../models/user.js");
-const UserOTPVerification = require("../models/otpVerification.js");
+const User = require("../../models/user.js");
+const UserOTPVerification = require("../../models/otpVerification.js");
 
 router.patch("/", async (req, res) => {
     try {

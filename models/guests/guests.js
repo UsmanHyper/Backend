@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const vanderSchema = new mongoose.Schema({
+const guestSchema = new mongoose.Schema({
     email: { type: String, unique: true, sparse: true, trim: true, lowercase: true },
     number: { type: String, unique: true, sparse: true, trim: true },
     password: { type: String, required: true },
@@ -13,6 +13,6 @@ const vanderSchema = new mongoose.Schema({
     }
 });
 
-const Vander = mongoose.model("Vander", vanderSchema);
+const Guest = mongoose.model("Guest", guestSchema);
 
-module.exports = Vander;
+module.exports = Guest;

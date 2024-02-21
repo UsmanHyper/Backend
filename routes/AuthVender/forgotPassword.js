@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 // const cron = require("node-cron");
 
-const User = require("../../models/user.js");
+const User = require("../../models/vander/add_vander.js");
 const UserOTPVerification = require("../../models/otpVerification.js");
 
 const { sendEmail } = require("../../middleware/sendEmail.js");

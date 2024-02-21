@@ -3,7 +3,7 @@ const router = express.Router();
 const { sendEmail } = require("../../middleware/sendEmail.js");
 
 const bcrypt = require("bcrypt");
-const User = require("../../models/user.js");
+const User = require("../../models/vander/add_vander.js");
 
 router.patch("/", async (req, res) => {
     try {

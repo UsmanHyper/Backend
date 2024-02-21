@@ -27,6 +27,11 @@ const saveUsers = require("./routes/saveUsers.js");
 const getUsers = require("./routes/getAllDataUsers.js");
 const getOneUsers = require("./routes/getUserData.js");
 const verifyOTP = require("./routes/verifyOtp.js");
+const signUpVander = require("./routes/AuthVender/signup.js");
+const signInVander = require("./routes/AuthVender/signin.js");
+const resetVander = require("./routes/AuthVender/resetPassword.js");
+const passwordVander = require("./routes/AuthVender/changePassword.js");
+const forgotVander = require("./routes/AuthVender/forgotPassword.js");
 const app = express();
 const PORT = 3000;
 require('dotenv').config();
@@ -66,6 +71,11 @@ mongooseConnection.on('open', () => {
     app.use("/api/saveUsers", saveUsers);
     app.use("/api/getUsers", getUsers);
     app.use("/api/getOneUsers", getOneUsers);
+    app.use("/api/signUpVander", signUpVander);
+    app.use("/api/signInVander", signInVander);
+    app.use("/api/resetVander", resetVander);
+    app.use("/api/forgotVander", forgotVander);
+    app.use("/api/passwordVander", passwordVander);
 
     // Other code related to Express setup, routes, and starting the server
     app.listen(PORT, () => {
